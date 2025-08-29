@@ -3,6 +3,7 @@ import 'list_page.dart';
 import 'welcome_page.dart';
 import 'profile_page.dart';
 import 'dashboard_page.dart';
+import 'grid_pages.dart';
 class Dashboard extends StatefulWidget {
   @override
   _Dashboard createState() => _Dashboard();
@@ -13,7 +14,7 @@ class _Dashboard extends State<Dashboard> {
 
   final List<Widget> _screens = [
     DashboardPage(),
-    WelcomePage(),
+    GridPages(),
     ProfilePage(),
   ];
   void _onItemTapped(int index) {
@@ -38,7 +39,7 @@ class _Dashboard extends State<Dashboard> {
             icon: Icon(Icons.list),
             label: 'List',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person_off),
+          BottomNavigationBarItem(icon: Icon(Icons.person),
               label: 'profile')
         ],
         currentIndex: _selectedIndex,

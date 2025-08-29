@@ -42,20 +42,22 @@ class DashboardPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
+
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: List.generate(10, (index) {
+                    children: List.generate(31, (index) {
                       return Container(
+                        margin: EdgeInsets.all(4),
                         padding: EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
-                          color: index == 3 ? Colors.orange : Colors.grey[850],
-                          borderRadius: BorderRadius.circular(6),
+                          color: index == 28 ? Colors.orange : Colors.grey[850],
+                          borderRadius: BorderRadius.circular(18),
                         ),
                         child: Text(
-                          '${index + 1}\nFeb',
+                          '${index + 1}\nAug',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 16,
-                          color: Colors.white),
+                              color: Colors.white),
                         ),
                       );
                     }),
@@ -63,61 +65,61 @@ class DashboardPage extends StatelessWidget {
                 ),
               ),
               Padding(padding: const EdgeInsets.all(16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Text('1456 kcal',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20),
-                      ),
-                      Text('Consumed',style: TextStyle(color: Colors.white),),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Text('1456 kcal',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20),
+                        ),
+                        Text('Consumed',style: TextStyle(color: Colors.white),),
 
-                    ],
-                  ),
-
-                  SizedBox(
-                    height:100,
-                    width: 100,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 12,
-                      backgroundColor: Colors.grey[850],
-                      value: 0.75,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
+                      ],
                     ),
-                  ),
-                  Column(
-                    children: [
-                      Text('2875 kcal',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,
-                          fontSize: 20),),
-                      Text('Remaining',style: TextStyle(color: Colors.white),),
-                    ],
-                  )
-                ],
-              ),
+
+                    SizedBox(
+                      height:100,
+                      width: 100,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 12,
+                        backgroundColor: Colors.grey[850],
+                        value: 0.75,
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Text('2875 kcal',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,
+                            fontSize: 20),),
+                        Text('Remaining',style: TextStyle(color: Colors.white),),
+                      ],
+                    )
+                  ],
+                ),
               ),
               Padding(padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text('P-10/12g',style: TextStyle(color: Colors.white,),),
-                  Text('C-10/12g',style: TextStyle(color: Colors.white,),),
-                  Text('F-10/12g',style: TextStyle(color: Colors.white,),),
-                ],
-              ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text('P-10/12g',style: TextStyle(color: Colors.white,),),
+                    Text('C-10/12g',style: TextStyle(color: Colors.white,),),
+                    Text('F-10/12g',style: TextStyle(color: Colors.white,),),
+                  ],
+                ),
               ),
               Padding(padding: const EdgeInsets.all(16.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text('Food logo',style: TextStyle(color: Colors.white,fontSize: 32),),
-              ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('Food logo',style: TextStyle(color: Colors.white,fontSize: 32),),
+                ),
               ),
               Container(margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
-              padding: EdgeInsets.all(16),
+                padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.grey[850],
                   borderRadius: BorderRadius.circular(8),

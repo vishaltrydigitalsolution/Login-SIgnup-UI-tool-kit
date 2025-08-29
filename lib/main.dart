@@ -11,6 +11,7 @@
     import 'constants/routes.dart';
     import 'pages/forgot_new_password.dart';
     import 'pages/forgot_password_verification.dart';
+    import 'pages/profile_page.dart';
 
     void main() => runApp(MyApp());
 
@@ -51,6 +52,10 @@
           name: Routes.forgotPasswordPage,
           page: () => ForgotPasswordPage(),
         ),
+      GetPage(
+        name: Routes.forgotPasswordPage,
+        page: () => ForgotPasswordPage(),
+      ),
       ],
       // home: WelcomePage(),
     );
