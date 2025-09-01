@@ -3,6 +3,7 @@
     import 'package:login/pages/controllers/dashborad_controller.dart';
     import 'package:login/pages/dashboard.dart';
     import 'package:login/pages/forgot_password_page.dart';
+    import 'package:login/pages/grid_page.dart';
     import 'package:login/pages/login_page.dart';
     import 'package:login/pages/register_page.dart';
     import 'package:login/pages/register_verification.dart';
@@ -11,7 +12,7 @@
     import 'constants/routes.dart';
     import 'pages/forgot_new_password.dart';
     import 'pages/forgot_password_verification.dart';
-    import 'pages/profile_page.dart';
+
 
     void main() => runApp(MyApp());
 
@@ -56,6 +57,7 @@
         name: Routes.forgotPasswordPage,
         page: () => ForgotPasswordPage(),
       ),
+      GetPage(name: Routes.gridPage, page: ()=>GridPage(),)
       ],
       // home: WelcomePage(),
     );
