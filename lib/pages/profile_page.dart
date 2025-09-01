@@ -3,27 +3,24 @@ import 'package:get/get.dart';
 import 'package:login/pages/controllers/profile_controller.dart';
 
 class ProfilePage extends GetView<ProfileController> {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileController());
 
     return Obx(() {
-      if (controller.isLoading.value) {
-        return const Center(child: CircularProgressIndicator());
-      }
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(controller.user.value?.username ?? 'Profile'),
+          title: Text(controller.user.value?.username ?? 'Profile',),
         ),
         backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.all(8),
           child: SafeArea(
             child: SingleChildScrollView(
-              child: Column(
+              child: Column(mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   _buildProfileHeader(controller),
                   const SizedBox(height: 10),
@@ -62,8 +59,10 @@ Widget _buildProfileHeader(ProfileController controller) {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildStatColumn('Followers', user.followers ?? 0),
-              _buildStatColumn('Following', user.following ?? 0),
+              _buildStatColumn('Post', user.post),
+              _buildStatColumn('Following', user.following),
+              _buildStatColumn('Following', user.following),
+
             ],
           ),
         ],
