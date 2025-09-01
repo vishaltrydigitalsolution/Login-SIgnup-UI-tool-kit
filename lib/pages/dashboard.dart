@@ -3,7 +3,9 @@ import 'list_page.dart';
 import 'welcome_page.dart';
 import 'profile_page.dart';
 import 'dashboard_page.dart';
-import 'grid_pages.dart';
+import 'grid_page.dart';
+import 'grid_page.dart';
+
 import '../whatsapp_pages/home_page.dart';
 class Dashboard extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ class _Dashboard extends State<Dashboard> {
 
   final List<Widget> _screens = [
     DashboardPage(),
-    HomePage(),
+    GridPage(),
     ProfilePage(),
   ];
   void _onItemTapped(int index) {
@@ -29,11 +31,11 @@ class _Dashboard extends State<Dashboard> {
     return Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[900],
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home,),
-            backgroundColor: Color(0xff575DFB),
+            backgroundColor: Colors.orange,
             label: 'Home',
           ),
           BottomNavigationBarItem(
@@ -45,10 +47,12 @@ class _Dashboard extends State<Dashboard> {
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        unselectedItemColor: Colors.black,
-        selectedItemColor: Color(0xff575DFB),
+        unselectedItemColor: Colors.orange,
+        selectedItemColor: Colors.white,
       ),
     );
   }
 }
+
+
 
