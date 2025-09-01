@@ -7,7 +7,7 @@ late VideoPlayerController _controller;
 
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.white,
-      appBar: AppBar(title: Text('Grid view'),
+      appBar: AppBar(title: Text(''),
         backgroundColor: Colors.white,
 
       ),

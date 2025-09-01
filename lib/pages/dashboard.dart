@@ -4,6 +4,7 @@ import 'welcome_page.dart';
 import 'profile_page.dart';
 import 'dashboard_page.dart';
 import 'grid_pages.dart';
+import '../whatsapp_pages/home_page.dart';
 class Dashboard extends StatefulWidget {
   @override
   _Dashboard createState() => _Dashboard();
@@ -14,7 +15,7 @@ class _Dashboard extends State<Dashboard> {
 
   final List<Widget> _screens = [
     DashboardPage(),
-    GridPages(),
+    HomePage(),
     ProfilePage(),
   ];
   void _onItemTapped(int index) {
