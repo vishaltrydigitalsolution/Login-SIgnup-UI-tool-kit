@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:login/constants/routes.dart';
 import 'controllers/dashborad_controller.dart';
 
 class DashboardPage extends GetView<DashboradController> {
@@ -20,7 +20,6 @@ class DashboardPage extends GetView<DashboradController> {
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: [
-
                       const CircleAvatar(
                         radius: 24,
                         backgroundImage: AssetImage('assets/images/image.png'),
@@ -59,32 +58,29 @@ class DashboardPage extends GetView<DashboradController> {
                   ),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    child:
-                      Row(
-                        children: List.generate(controller.daysInMonth, (
-                          index,
-                        ) {
-                          final today = DateTime.now().day;
-                          return Container(
-                            margin: const EdgeInsets.all(2),
-                            padding: const EdgeInsets.all(16.0),
-                            decoration: BoxDecoration(
-                              color: index + 1 == today
-                                  ? Colors.orange
-                                  : Colors.grey[900],
-                              borderRadius: BorderRadius.circular(18),
+                    child: Row(
+                      children: List.generate(controller.daysInMonth, (index) {
+                        final today = DateTime.now().day;
+                        return Container(
+                          margin: const EdgeInsets.all(2),
+                          padding: const EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            color: index + 1 == today
+                                ? Colors.orange
+                                : Colors.grey[900],
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          child: Text(
+                            '${index + 1}\n${DashboradController.monthNames[controller.month - 1]}',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
                             ),
-                            child: Text(
-                              '${index + 1}\n${DashboradController.monthNames[controller.month - 1]}',
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
+                          ),
+                        );
+                      }),
+                    ),
                   ),
                 ),
 
@@ -172,7 +168,6 @@ class DashboardPage extends GetView<DashboradController> {
                               width: 60,
                               height: 60,
                               fit: BoxFit.cover,
-
                             ),
                           ),
                           const SizedBox(width: 20),
@@ -209,11 +204,21 @@ class DashboardPage extends GetView<DashboradController> {
                         ],
                       ),
                     );
-                  }
-                  ).toList(),
+                  }).toList(),
                 ),
               ],
             ),
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black87,
+          onPressed: () {
+          },
+          child: IconButton(
+            onPressed: () {
+              Get.toNamed(Routes.taskRegisterPage);
+            },
+            icon: Icon(Icons.add, color: Colors.orange, size: 35),
           ),
         ),
       );

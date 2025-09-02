@@ -7,6 +7,8 @@
     import 'package:login/pages/login_page.dart';
     import 'package:login/pages/register_page.dart';
     import 'package:login/pages/register_verification.dart';
+import 'package:login/pages/task_page.dart';
+import 'package:login/pages/task_register_page.dart';
     import 'package:login/pages/welcome_page.dart';
     import 'package:get/route_manager.dart';
     import 'constants/routes.dart';
@@ -57,7 +59,9 @@
         name: Routes.forgotPasswordPage,
         page: () => ForgotPasswordPage(),
       ),
-      GetPage(name: Routes.gridPage, page: ()=>GridPage(),)
+      GetPage(name: Routes.gridPage, page: ()=>GridPage(),),
+      GetPage(name:Routes.taskPage, page: ()=>TaskPage(),),
+      GetPage(name: Routes.taskRegisterPage, page: ()=>TaskRegisterPage(),),
       ],
       // home: WelcomePage(),
     );

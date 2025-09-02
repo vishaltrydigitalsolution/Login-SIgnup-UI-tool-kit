@@ -8,6 +8,8 @@ class Routes{
   static const dashboard  = "/Dashboard";
   static const  forgotPasswordPage  = "/ForgotPasswordPage";
   static const gridPage ="/GridPage";
+  static const taskPage ="/taskPage";
+  static const taskRegisterPage="/taskRegisterPage";
 
 
 
