@@ -57,12 +57,10 @@ class LoginPage extends StatelessWidget {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color(0xff575DFB), // Example: Blue border
-                        width: 1.5, // Example: 2 pixels wide border
+                        color: Color(0xff575DFB),
+                        width: 1.5,
                       ),
-                      borderRadius: BorderRadius.circular(
-                        16.0,
-                      ), // Example: Rounded corners
+                      borderRadius: BorderRadius.circular(16.0),
                     ),
                     hintText: 'Ex:abc@exampl.com',
                     prefixIcon: Padding(
@@ -92,18 +90,16 @@ class LoginPage extends StatelessWidget {
                 ),
                 Obx(
                   () => TextFormField(
-                    maxLength: 8,
+                    maxLength: 13,
                     obscureText: !controller.isPasswordVisible.value,
                     controller: _passwordController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xff575DFB), // Example: Blue border
-                          width: 1.5, // Example: 2 pixels wide border
+                          color: Color(0xff575DFB),
+                          width: 1.5,
                         ),
-                        borderRadius: BorderRadius.circular(
-                          16.0,
-                        ), // Example: Rounded corners
+                        borderRadius: BorderRadius.circular(16.0),
                       ),
                       hintText: '*********',
                       prefixIcon: Padding(
@@ -122,9 +118,7 @@ class LoginPage extends StatelessWidget {
                               : Icons.visibility_off,
                           color: Color(0xff575DFB),
                         ),
-                        onPressed:
-                          controller.tooglePassword,
-
+                        onPressed: controller.togglePassword,
                       ),
                     ),
                     validator: (value) {
@@ -158,14 +152,7 @@ class LoginPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => RegisterPage()),
-                      );
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(SnackBar(content: Text('welcome')));
-                      return;
+                      controller.login(_emailController.text, _passwordController.text);
                     }
                   },
                   child: Container(
@@ -257,14 +244,10 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-
   OutlineInputBorder textFieldBorder() {
     return OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Color(0xff575DFB), // Example: Blue border
-        width: 1.5, // Example: 2 pixels wide border
-      ),
-      borderRadius: BorderRadius.circular(16.0), // Example: Rounded corners
+      borderSide: BorderSide(color: Color(0xff575DFB), width: 1.5),
+      borderRadius: BorderRadius.circular(16.0),
     );
   }
 }
