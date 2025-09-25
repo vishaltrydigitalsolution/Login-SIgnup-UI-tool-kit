@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 class GridController extends GetxController{
   final RxList<GridItem>gridItems=<GridItem>[].obs;
-
   @override
   void onInit(){
     super.onInit();
@@ -30,7 +29,6 @@ class GridController extends GetxController{
       GridItem(imageUrl: 'https://picsum.photos/200/300?random=11', title: 'Item 11'),
       GridItem(imageUrl: 'https://picsum.photos/200/300?random=12', title: 'Item 12'),
       GridItem(imageUrl: 'https://picsum.photos/200/300?random=13', title: 'Item 13'),
-
     ]);
   }
 }

@@ -21,18 +21,17 @@ class LoginController extends GetxController {
       );
       if (response.statusCode == 200) {
         final loginData = Login.fromJson(response.data);
-        ScaffoldMessenger.of(Get.context!,
+        ScaffoldMessenger.of(
+          Get.context!,
         ).showSnackBar(SnackBar(content: Text(response.data['message'])));
         Get.offAllNamed(Routes.dashboard);
-        print(response.data);
         return loginData;
       }
-
-
     } on DioException catch (e) {
       ScaffoldMessenger.of(
         Get.context!,
       ).showSnackBar(SnackBar(content: Text(e.response?.data["message"])));
     }
+    return null;
   }
 }

@@ -13,14 +13,15 @@ class ProfilePage extends GetView<ProfileController> {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(controller.user.value?.username ?? 'Profile',),
+          title: Text(controller.user.value?.username ?? 'Profile'),
         ),
         backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.all(8),
           child: SafeArea(
             child: SingleChildScrollView(
-              child: Column(mainAxisAlignment: MainAxisAlignment.start,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   _buildProfileHeader(controller),
                   const SizedBox(height: 10),
@@ -62,7 +63,6 @@ Widget _buildProfileHeader(ProfileController controller) {
               _buildStatColumn('Post', user.post),
               _buildStatColumn('Following', user.following),
               _buildStatColumn('Following', user.following),
-
             ],
           ),
         ],

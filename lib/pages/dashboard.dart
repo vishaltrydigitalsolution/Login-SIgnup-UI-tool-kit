@@ -6,7 +6,6 @@ import 'dashboard_page.dart';
 import 'grid_page.dart';
 import 'grid_page.dart';
 
-import '../whatsapp_pages/home_page.dart';
 class Dashboard extends StatefulWidget {
   @override
   _Dashboard createState() => _Dashboard();
