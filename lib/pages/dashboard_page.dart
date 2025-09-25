@@ -10,7 +10,10 @@ class DashboardPage extends GetView<DashboradController> {
   Widget build(BuildContext context) {
     final controller = Get.put(DashboradController());
     return Obx(() {
+      var sizedBox = SizedBox(height: 10,);
       return Scaffold(
+         appBar: AppBar(backgroundColor: Colors.black,
+         ),
         backgroundColor: Colors.black,
         body: SafeArea(
           child: SingleChildScrollView(
@@ -20,9 +23,14 @@ class DashboardPage extends GetView<DashboradController> {
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: [
-                      const CircleAvatar(
-                        radius: 24,
-                        backgroundImage: AssetImage('assets/images/imas.png'),
+                      GestureDetector(
+                        onTap: (){
+                          Scaffold.of(context).openDrawer();
+                        },
+                        child: const CircleAvatar(
+                          radius: 24,
+                           backgroundImage: AssetImage('assets/images/imas.png'),
+                        ),
                       ),
                       const SizedBox(width: 16),
                       Column(
@@ -221,7 +229,11 @@ class DashboardPage extends GetView<DashboradController> {
                   children: [
                     Text("akazha@gmail.com",style: TextStyle(color: Colors.white,fontSize: 18),),
                     Spacer(),
-                    Icon(Icons.arrow_drop_down,color: Colors.white,size: 30,),
+                    GestureDetector(
+                      onTap: (){
+                        Scaffold.of(context).isDrawerOpen;
+                      },
+                        child: Icon(Icons.arrow_drop_down,color: Colors.white,size: 30,)),
                   ],
                 ),
                 currentAccountPicture: CircleAvatar(
@@ -247,6 +259,7 @@ class DashboardPage extends GetView<DashboradController> {
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
+                 sizedBox,
                   ListTile(
                     onTap: () {},
                     leading: Icon(Icons.person, size: 30, color: Colors.white),
@@ -255,6 +268,7 @@ class DashboardPage extends GetView<DashboradController> {
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
+                  sizedBox,
                   ListTile(
                     onTap: () {},
                     leading: Icon(Icons.star, size: 30, color: Colors.white),
@@ -263,6 +277,7 @@ class DashboardPage extends GetView<DashboradController> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
+                  sizedBox,
                   ListTile(
                     onTap: () {},
                     leading: Icon(
@@ -275,6 +290,7 @@ class DashboardPage extends GetView<DashboradController> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
+                  sizedBox,
                   ListTile(
                     onTap: () {},
                     leading: Icon(
@@ -287,6 +303,7 @@ class DashboardPage extends GetView<DashboradController> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
+                  sizedBox,
                   ListTile(
                     onTap: () {},
                     leading: Icon(Icons.upload, size: 30, color: Colors.white),
@@ -295,6 +312,7 @@ class DashboardPage extends GetView<DashboradController> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
+                  sizedBox,
                   ListTile(
                     onTap: () {},
                     leading: Icon(Icons.backup, size: 30, color: Colors.white),
@@ -303,6 +321,7 @@ class DashboardPage extends GetView<DashboradController> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
+                  sizedBox,
                   ListTile(
                     onTap: () {
                       // Get.toNamed(Routes.profile);
@@ -310,6 +329,17 @@ class DashboardPage extends GetView<DashboradController> {
                     leading: Icon(Icons.person_off, size: 30, color: Colors.white),
                     title: Text(
                       "Profile",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                  sizedBox,
+                  ListTile(
+                    onTap: () {
+                      // Get.toNamed(Routes.profile);
+                    },
+                    leading: Icon(Icons.logout, size: 30, color: Colors.white),
+                    title: Text(
+                      "Logout",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
