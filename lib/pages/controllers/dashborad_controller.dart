@@ -22,8 +22,8 @@ class DashboradController extends GetxController {
     return DateTime(year, month + 1, 0).day;
   }
 
-  final userName = " Hey! Mr.Fugazi".obs;
-  final bio ="Ready to conquer today".obs;
+  final userName = "Akazha".obs;
+  final bio ="Ready to conquer world".obs;
   final consumed = 1456.obs;
   final remaining = 2875.obs;
   final progress = 0.75.obs;

@@ -39,34 +39,30 @@ class ProfileController extends GetxController {
     await Future.delayed(const Duration(seconds: 0));
 
     user.value = UserModel(
-      username: "thevicstyles",
-      bio: "Vic styles | Coffee ☕ | Space",
+      username: "Zentusu",
+      bio: "Demons layer",
       profilePictureUrl:
-      "https://i.pravatar.cc/150?img=3",
+      "assets/images/aaaa.png",
       followers: 1200,
       following: 340,
       post: 12,
     );
 
     highlights.value = [
-      "https://i.pravatar.cc/150?img=5",
-      "https://i.pravatar.cc/150?img=6",
-      "https://i.pravatar.cc/150?img=7",
-      "https://i.pravatar.cc/150?img=8",
-      "https://i.pravatar.cc/150?img=9",
-      "https://i.pravatar.cc/150?img=1",
-      "https://i.pravatar.cc/150?img=3",
-      "https://i.pravatar.cc/150?img=5",
-      "https://i.pravatar.cc/150?img=5",
+      "assets/images/ahaha.png" ,
+      "assets/images/ahaha.png" ,
+      "assets/images/ahaha.png" ,
+      "assets/images/ahaha.png" ,
+      "assets/images/ahaha.png" ,
+      "assets/images/ahaha.png" ,
     ];
 
     posts.value = List.generate(
       12,
           (index) => PostModel(
-        imageUrl: "https://picsum.photos/200?random=$index",
+       imageUrl: "assets/images/ahaha.png",
       ),
     );
 
-    isLoading.value = false;
   }
 }

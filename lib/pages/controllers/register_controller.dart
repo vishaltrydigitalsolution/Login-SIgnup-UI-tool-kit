@@ -52,7 +52,7 @@ class RegisterController extends GetxController {
     } on DioException catch (e) {
       ScaffoldMessenger.of(
         Get.context!,
-      ).showSnackBar(SnackBar(content: Text('')));
+      ).showSnackBar(SnackBar(content: Text("")));
     }
   }
 }

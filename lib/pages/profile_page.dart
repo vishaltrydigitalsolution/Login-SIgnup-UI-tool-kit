@@ -12,10 +12,10 @@ class ProfilePage extends GetView<ProfileController> {
     return Obx(() {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text(controller.user.value?.username ?? 'Profile'),
+          backgroundColor: Colors.black,
+          title: Text(controller.user.value?.username ?? 'Profile',style: TextStyle(color: Colors.white),),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         body: Padding(
           padding: const EdgeInsets.all(8),
           child: SafeArea(
@@ -48,14 +48,14 @@ Widget _buildProfileHeader(ProfileController controller) {
         children: [
           CircleAvatar(
             radius: 50,
-            backgroundImage: NetworkImage(user.profilePictureUrl),
+            backgroundImage: AssetImage(user.profilePictureUrl),
           ),
           const SizedBox(height: 10),
           Text(
             user.username,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white),
           ),
-          Text(user.bio),
+          Text(user.bio,style: TextStyle(color: Colors.white),),
           const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -83,7 +83,7 @@ Widget _buildHighlights(ProfileController controller) {
             padding: const EdgeInsets.all(8),
             child: CircleAvatar(
               radius: 35,
-              backgroundImage: NetworkImage(controller.highlights[index]),
+              backgroundImage: AssetImage(controller.highlights[index]),
             ),
           );
         },
@@ -95,7 +95,7 @@ Widget _buildHighlights(ProfileController controller) {
 Widget _buildPostGrid(ProfileController controller) {
   return Obx(() {
     if (controller.posts.isEmpty) {
-      return const Center(child: Text("No posts yet"));
+      return const Center(child: Text("No posts yet",style: TextStyle(color: Colors.white),));
     }
     return GridView.builder(
       shrinkWrap: true,
@@ -108,7 +108,7 @@ Widget _buildPostGrid(ProfileController controller) {
       ),
       itemBuilder: (context, index) {
         final post = controller.posts[index];
-        return Image.network(post.imageUrl, fit: BoxFit.cover);
+        return Image.asset(post.imageUrl, fit: BoxFit.cover);
       },
     );
   });
@@ -119,9 +119,9 @@ Widget _buildStatColumn(String label, int count) {
     children: [
       Text(
         count.toString(),
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18,color: Colors.white),
       ),
-      Text(label),
+      Text(label,style: TextStyle(color: Colors.white),),
     ],
   );
 }

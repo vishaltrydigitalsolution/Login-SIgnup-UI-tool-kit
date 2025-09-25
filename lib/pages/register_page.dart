@@ -13,7 +13,6 @@ class RegisterPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   RegisterPage({super.key});
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _lastnameController = TextEditingController();
@@ -27,8 +26,12 @@ class RegisterPage extends StatelessWidget {
     final XFile? pickedImage = await picker.pickImage(
       source: ImageSource.gallery,
     );
+    if(pickedImage==null){
+      Get.snackbar("Error", "No image selected");
+    }
     image.value = pickedImage;
     return pickedImage?.path;
+
   }
 
   @override

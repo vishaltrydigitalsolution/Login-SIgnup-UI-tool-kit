@@ -47,7 +47,7 @@ class _Dashboard extends State<Dashboard> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         unselectedItemColor: Colors.orange,
-        selectedItemColor: Colors.white,
+        selectedItemColor: Colors.black,
       ),
     );
   }
