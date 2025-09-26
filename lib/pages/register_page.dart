@@ -1,97 +1,89 @@
+import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:flutter/services.dart';
 import 'package:login/constants/routes.dart';
 import 'package:get/get.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:login/pages/controllers/register_controller.dart';
-import 'package:login/pages/register_verification.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 
 class RegisterPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   RegisterPage({super.key});
-
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _yourController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _lastnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _mobileController = TextEditingController();
   final RegisterController controller = Get.put(RegisterController());
+  final ImagePicker picker = ImagePicker();
+  final Rxn<XFile> image = Rxn<XFile>();
+
+  Future<String?> pickImage() async {
+    final XFile? pickedImage = await picker.pickImage(
+      source: ImageSource.gallery,
+    );
+    if(pickedImage==null){
+      Get.snackbar("Error", "No image selected");
+    }
+    image.value = pickedImage;
+    return pickedImage?.path;
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          textAlign: TextAlign.start,
+          "Register",
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.w700,
+            color: Color(0xff575DFB),
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Image.asset("assets/images/icon.png",height: 100,width: 100,)
+        ),
+        actions: [
+          IconButton(
+            onPressed: pickImage,
+            icon: const Icon(Icons.photo, size: 25, color: Color(0xff575DFB)),
+          ),
+        ],
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
-            // autovalidateMode: AutovalidateMode.,
+            autovalidateMode: AutovalidateMode.onUnfocus,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Image.asset("assets/images/icon.png"),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "Register",
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xff575DFB),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                RichText(
-                  text: TextSpan(
-                    text: 'Create an ',
-                    style: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
+                Obx(
+                  () => Center(
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: image.value != null
+                          ? FileImage(File(image.value!.path))
+                          : null,
+                      backgroundColor: Colors.white,
                     ),
-                    children: [
-                      TextSpan(
-                        text: 'account',
-                        style: TextStyle(
-                          color: Color(0xff575DFB),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        children: [
-                          TextSpan(
-                            text:
-                                ' to access all the '
-                                'feature of ',
-                            style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: 'Maxpense!',
-                                style: TextStyle(
-                                  fontStyle: FontStyle.normal,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+
                   ),
                 ),
-                const SizedBox(height: 30),
                 Text(
                   "Email",
                   style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
@@ -126,7 +118,7 @@ class RegisterPage extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
                 ),
                 TextFormField(
-                  controller: _yourController,
+                  controller: _nameController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -158,14 +150,79 @@ class RegisterPage extends StatelessWidget {
                     return null;
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20),
+                Text("Surname"),
+                TextFormField(
+                  controller: _lastnameController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0XFF575DFB),
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.person_add,
+                      color: Color(0XFF575DFB),
+                    ),
+                    hintText: "Enter your surname",
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Enter your password';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 20),
+                Text("Mobile no."),
+                TextFormField(
+                  maxLength: 10,
+                  keyboardType: TextInputType.number,
+                  controller: _mobileController,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  ],
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0XFF575DFB),
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    prefixIcon: CountryCodePicker(
+                      onChanged: (country) {},
+                      initialSelection: 'IN',
+                      favorite: const ['+91', 'IN'],
+                      showCountryOnly: false,
+                      showOnlyCountryWhenClosed: false,
+                      alignLeft: false,
+                    ),
+                    hintText: "Enter mobile no.",
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Enter your mobile no.';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 10),
                 Text(
                   "Your password",
                   style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
                 ),
                 Obx(
                   () => TextFormField(
-                    maxLength: 8,
+                    maxLength: 15,
                     controller: _passwordController,
                     obscureText: !controller.isPasswordVisible.value,
                     decoration: InputDecoration(
@@ -196,7 +253,7 @@ class RegisterPage extends StatelessWidget {
                           color: Color(0xff575DFB),
                         ),
                         onPressed: () {
-                          controller.tooglePassword();
+                          controller.togglePassword();
                         },
                       ),
                     ),
@@ -211,23 +268,20 @@ class RegisterPage extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 10),
+               // const SizedBox(height: 10),
                 const SizedBox(height: 20),
                 GestureDetector(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => RegisterVerification(),
-                        ),
+                      controller.multiPartAPI(
+                        _nameController.text,
+                        _lastnameController.text,
+                        _mobileController.text,
+                        _emailController.text,
+                        _passwordController.text,
+                        image.value?.path,
                       );
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(SnackBar(content: Text('welcome')));
-                      return;
                     }
-                    // Get.toNamed('/registerVerification',arguments: {"dataKey":_passwordController});
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
@@ -249,7 +303,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+               // const SizedBox(height: 20),
                 // Divider(
                 // height: 10,
                 // ),
@@ -294,7 +348,7 @@ class RegisterPage extends StatelessWidget {
 
   OutlineInputBorder textFieldBorder() {
     return OutlineInputBorder(
-      borderSide: BorderSide(color: Color(0xff575DFB), width: 1.5),
+      borderSide: BorderSide(color: Color(0xff575DFB), width: 2),
       borderRadius: BorderRadius.circular(16.0),
     );
   }
