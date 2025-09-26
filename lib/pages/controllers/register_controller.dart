@@ -2,8 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide MultipartFile, FormData;
 import 'package:http_parser/http_parser.dart' as http_parser;
-
-
 import 'package:login/constants/routes.dart';
 
 class RegisterController extends GetxController {
@@ -26,7 +24,7 @@ class RegisterController extends GetxController {
       FormData formData = FormData.fromMap({
         "firstname": firstname,
         "lastname": lastname,
-        "contact":contact,
+        "contact": contact,
         "email": email,
         "country_code": '+91',
         "country_flag": 'IN',
@@ -34,11 +32,14 @@ class RegisterController extends GetxController {
         "profile_pic": await MultipartFile.fromFile(
           imageFile!,
           filename: imageFile.split('/').last, // Extract filename
-          contentType: http_parser.MediaType('image', 'jpeg'), // Optional: specify content type
+          contentType: http_parser.MediaType(
+            'image',
+            'jpeg',
+          ), // Optional: specify content type
         ),
       });
 
-      final response = await dio.post(url, data:formData);
+      final response = await dio.post(url, data: formData);
       if (response.statusCode == 200) {
         ScaffoldMessenger.of(
           Get.context!,

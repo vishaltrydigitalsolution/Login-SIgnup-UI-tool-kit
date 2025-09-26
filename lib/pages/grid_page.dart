@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../constants/routes.dart';
 import 'controllers/grid_controller.dart';
 
 class GridPage extends GetView<GridController> {
@@ -10,7 +11,7 @@ class GridPage extends GetView<GridController> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('Grid page',style: TextStyle(color: Colors.white),),
+        title: Text('Grid page', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
         automaticallyImplyLeading: false,
       ),
@@ -29,20 +30,15 @@ class GridPage extends GetView<GridController> {
               final item = controller.gridItems[index];
               return Card(
                 color: Colors.black,
-                elevation: 200,
+                elevation: 100,
                 shadowColor: Colors.white,
                 child: Column(
                   children: [
-                    Expanded(
-                      child: Image.asset(
-                        item.image,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                    Expanded(child: Image.asset(item.image, fit: BoxFit.cover)),
                     Text(
                       item.title,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.red,fontSize: 20),
+                      style: TextStyle(color: Colors.red, fontSize: 20),
                     ),
                   ],
                 ),
@@ -50,6 +46,13 @@ class GridPage extends GetView<GridController> {
             },
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        onPressed: () {},
+        child: IconButton(onPressed: () {
+          Get.toNamed(Routes.pages);
+        }, icon: Icon(Icons.add,size: 32,color: Colors.red,)),
       ),
     );
   }

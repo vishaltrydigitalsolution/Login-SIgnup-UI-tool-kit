@@ -248,7 +248,10 @@ class DashboardPage extends GetView<DashboradController> {
               Column(
                 children: [
                   ListTile(
-                    onTap: () {},
+                    splashColor: Colors.redAccent,
+                    onTap: () {
+                      Get.toNamed(Routes.pages);
+                    },
                     leading: Icon(
                       Icons.file_copy,
                       size: 30,
@@ -261,6 +264,7 @@ class DashboardPage extends GetView<DashboradController> {
                   ),
                  sizedBox,
                   ListTile(
+                    splashColor: Colors.redAccent,
                     onTap: () {},
                     leading: Icon(Icons.person, size: 30, color: Colors.white),
                     title: Text(
@@ -270,6 +274,7 @@ class DashboardPage extends GetView<DashboradController> {
                   ),
                   sizedBox,
                   ListTile(
+                    splashColor: Colors.redAccent,
                     onTap: () {},
                     leading: Icon(Icons.star, size: 30, color: Colors.white),
                     title: Text(
@@ -279,6 +284,7 @@ class DashboardPage extends GetView<DashboradController> {
                   ),
                   sizedBox,
                   ListTile(
+                    splashColor: Colors.redAccent,
                     onTap: () {},
                     leading: Icon(
                       Icons.recent_actors,
@@ -292,6 +298,7 @@ class DashboardPage extends GetView<DashboradController> {
                   ),
                   sizedBox,
                   ListTile(
+                    splashColor: Colors.redAccent,
                     onTap: () {},
                     leading: Icon(
                       Icons.offline_bolt,
@@ -305,6 +312,7 @@ class DashboardPage extends GetView<DashboradController> {
                   ),
                   sizedBox,
                   ListTile(
+                    splashColor: Colors.redAccent,
                     onTap: () {},
                     leading: Icon(Icons.upload, size: 30, color: Colors.white),
                     title: Text(
@@ -314,6 +322,7 @@ class DashboardPage extends GetView<DashboradController> {
                   ),
                   sizedBox,
                   ListTile(
+                    splashColor: Colors.redAccent,
                     onTap: () {},
                     leading: Icon(Icons.backup, size: 30, color: Colors.white),
                     title: Text(
@@ -323,6 +332,7 @@ class DashboardPage extends GetView<DashboradController> {
                   ),
                   sizedBox,
                   ListTile(
+                    splashColor: Colors.redAccent,
                     onTap: () {
                       // Get.toNamed(Routes.profile);
                     },
@@ -334,6 +344,7 @@ class DashboardPage extends GetView<DashboradController> {
                   ),
                   sizedBox,
                   ListTile(
+                    splashColor: Colors.redAccent,
                     onTap: () {
                       // Get.toNamed(Routes.profile);
                     },
