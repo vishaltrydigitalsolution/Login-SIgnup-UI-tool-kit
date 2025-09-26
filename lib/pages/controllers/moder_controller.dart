@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 class ModerController extends GetxController  {
+
+
   final List<Map<String, String>> Fruits = [
     {"name": "Banana", "image": "assets/images/banana.png"},
     {"name": "Strawberry", "image": "assets/images/strawberry.png"},
