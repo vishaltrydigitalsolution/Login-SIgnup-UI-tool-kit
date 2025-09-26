@@ -6,7 +6,6 @@ import 'dashboard_page.dart';
 import 'grid_page.dart';
 import 'grid_page.dart';
 
-import '../whatsapp_pages/home_page.dart';
 class Dashboard extends StatefulWidget {
   @override
   _Dashboard createState() => _Dashboard();
@@ -48,7 +47,7 @@ class _Dashboard extends State<Dashboard> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         unselectedItemColor: Colors.orange,
-        selectedItemColor: Colors.white,
+        selectedItemColor: Colors.black,
       ),
     );
   }

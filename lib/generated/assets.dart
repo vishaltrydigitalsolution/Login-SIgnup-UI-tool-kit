@@ -2,10 +2,38 @@
 class Assets {
   Assets._();
 
+  static const String imagesAaaa = 'assets/images/aaaa.png';
+  static const String imagesAgatsuma = 'assets/images/agatsuma.png';
+  static const String imagesAhaha = 'assets/images/ahaha.png';
+  static const String imagesAkaza = 'assets/images/akaza.png';
+  static const String imagesAkazaPicture = 'assets/images/AkazaPicture.png';
+  static const String imagesAkza = 'assets/images/akza.png';
+  static const String imagesBanana = 'assets/images/banana.png';
+  static const String imagesCoat = 'assets/images/coat.png';
   static const String imagesFace = 'assets/images/face.png';
+  static const String imagesFries = 'assets/images/fries.png';
+  static const String imagesGir = 'assets/images/gir.png';
+  static const String imagesGirl = 'assets/images/girl.png';
   static const String imagesIcon = 'assets/images/icon.png';
+  static const String imagesImage = 'assets/images/image.png';
+  static const String imagesImages = 'assets/images/images.png';
+  static const String imagesImas = 'assets/images/imas.png';
+  static const String imagesJjjjj = 'assets/images/jjjjj.png';
+  static const String imagesKkkk = 'assets/images/kkkk.png';
+  static const String imagesLichi = 'assets/images/lichi.png';
   static const String imagesLogo = 'assets/images/Logo.png';
+  static const String imagesMaxican = 'assets/images/maxican.png';
+  static const String imagesNezuko = 'assets/images/nezuko.png';
+  static const String imagesOrange = 'assets/images/orange.png';
+  static const String imagesParroat = 'assets/images/parroat.png';
   static const String imagesPassword = 'assets/images/password.png';
+  static const String imagesPizza = 'assets/images/pizza.png';
+  static const String imagesPotato = 'assets/images/potato.png';
+  static const String imagesProfile = 'assets/images/profile.png';
+  static const String imagesSlayer = 'assets/images/slayer.png';
+  static const String imagesStrawberry = 'assets/images/strawberry.png';
   static const String imagesVector = 'assets/images/Vector.png';
+  static const String imagesVegetables = 'assets/images/vegetables.png';
+  static const String imagesZetsu = 'assets/images/zetsu.png';
 
 }

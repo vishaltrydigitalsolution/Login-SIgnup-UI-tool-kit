@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../constants/routes.dart';
 import 'controllers/grid_controller.dart';
 
 class GridPage extends GetView<GridController> {
@@ -8,10 +9,10 @@ class GridPage extends GetView<GridController> {
   Widget build(BuildContext context) {
     final GridController gridController = Get.put(GridController());
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('Grid page'),
-        backgroundColor: Colors.white,
+        title: Text('Grid page', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.black,
         automaticallyImplyLeading: false,
       ),
       body: Obx(
@@ -28,19 +29,16 @@ class GridPage extends GetView<GridController> {
             itemBuilder: (context, index) {
               final item = controller.gridItems[index];
               return Card(
-                elevation: 200,
+                color: Colors.black,
+                elevation: 100,
+                shadowColor: Colors.white,
                 child: Column(
                   children: [
-                    Expanded(
-                      child: Image.network(item.imageUrl, fit: BoxFit.cover),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Text(
-                        item.title,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(),
-                      ),
+                    Expanded(child: Image.asset(item.image, fit: BoxFit.cover)),
+                    Text(
+                      item.title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.red, fontSize: 20),
                     ),
                   ],
                 ),
@@ -48,6 +46,13 @@ class GridPage extends GetView<GridController> {
             },
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        onPressed: () {},
+        child: IconButton(onPressed: () {
+          Get.toNamed(Routes.pages);
+        }, icon: Icon(Icons.add,size: 32,color: Colors.red,)),
       ),
     );
   }

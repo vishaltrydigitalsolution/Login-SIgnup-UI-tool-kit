@@ -10,7 +10,10 @@ class DashboardPage extends GetView<DashboradController> {
   Widget build(BuildContext context) {
     final controller = Get.put(DashboradController());
     return Obx(() {
+      var sizedBox = SizedBox(height: 10,);
       return Scaffold(
+         appBar: AppBar(backgroundColor: Colors.black,
+         ),
         backgroundColor: Colors.black,
         body: SafeArea(
           child: SingleChildScrollView(
@@ -20,9 +23,14 @@ class DashboardPage extends GetView<DashboradController> {
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: [
-                      const CircleAvatar(
-                        radius: 24,
-                        backgroundImage: AssetImage('assets/images/image.png'),
+                      GestureDetector(
+                        onTap: (){
+                          Scaffold.of(context).openDrawer();
+                        },
+                        child: const CircleAvatar(
+                          radius: 24,
+                           backgroundImage: AssetImage('assets/images/imas.png'),
+                        ),
                       ),
                       const SizedBox(width: 16),
                       Column(
@@ -210,15 +218,155 @@ class DashboardPage extends GetView<DashboradController> {
             ),
           ),
         ),
+        drawer: Drawer(
+          backgroundColor: Colors.black,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text("Akazha",style: TextStyle(color: Colors.white,fontSize: 22,),),
+                accountEmail: Row(
+                  children: [
+                    Text("akazha@gmail.com",style: TextStyle(color: Colors.white,fontSize: 18),),
+                    Spacer(),
+                    GestureDetector(
+                      onTap: (){
+                        Scaffold.of(context).isDrawerOpen;
+                      },
+                        child: Icon(Icons.arrow_drop_down,color: Colors.white,size: 30,)),
+                  ],
+                ),
+                currentAccountPicture: CircleAvatar(
+                  radius: 40,
+                  backgroundImage: AssetImage("assets/images/AkazaPicture.png"),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.black
+                ),
+              ),
+
+              Column(
+                children: [
+                  ListTile(
+                    splashColor: Colors.redAccent,
+                    onTap: () {
+                      Get.toNamed(Routes.pages);
+                    },
+                    leading: Icon(
+                      Icons.file_copy,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      "My Files",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ),
+                 sizedBox,
+                  ListTile(
+                    splashColor: Colors.redAccent,
+                    onTap: () {},
+                    leading: Icon(Icons.person, size: 30, color: Colors.white),
+                    title: Text(
+                      "Shared with me",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ),
+                  sizedBox,
+                  ListTile(
+                    splashColor: Colors.redAccent,
+                    onTap: () {},
+                    leading: Icon(Icons.star, size: 30, color: Colors.white),
+                    title: Text(
+                      "Starred",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                  sizedBox,
+                  ListTile(
+                    splashColor: Colors.redAccent,
+                    onTap: () {},
+                    leading: Icon(
+                      Icons.recent_actors,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      "Recent",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                  sizedBox,
+                  ListTile(
+                    splashColor: Colors.redAccent,
+                    onTap: () {},
+                    leading: Icon(
+                      Icons.offline_bolt,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      "Offline",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                  sizedBox,
+                  ListTile(
+                    splashColor: Colors.redAccent,
+                    onTap: () {},
+                    leading: Icon(Icons.upload, size: 30, color: Colors.white),
+                    title: Text(
+                      "Uploads",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                  sizedBox,
+                  ListTile(
+                    splashColor: Colors.redAccent,
+                    onTap: () {},
+                    leading: Icon(Icons.backup, size: 30, color: Colors.white),
+                    title: Text(
+                      "Backups",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                  sizedBox,
+                  ListTile(
+                    splashColor: Colors.redAccent,
+                    onTap: () {
+                      // Get.toNamed(Routes.profile);
+                    },
+                    leading: Icon(Icons.person_off, size: 30, color: Colors.white),
+                    title: Text(
+                      "Profile",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                  sizedBox,
+                  ListTile(
+                    splashColor: Colors.redAccent,
+                    onTap: () {
+                      // Get.toNamed(Routes.profile);
+                    },
+                    leading: Icon(Icons.logout, size: 30, color: Colors.white),
+                    title: Text(
+                      "Logout",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.black87,
-          onPressed: () {
-          },
+          onPressed: () {},
           child: IconButton(
             onPressed: () {
               Get.toNamed(Routes.taskRegisterPage);
             },
-            icon: Icon(Icons.add, color: Colors.orange, size: 35),
+            icon: Icon(Icons.add, color: Colors.red, size: 35),
           ),
         ),
       );
